@@ -74,6 +74,9 @@ code --install-extension ms-vscode.powershell
 code --install-extension esbenp.prettier-vscode
 code --install-extension equimper.react-native-react-redux
 
+#--- Hyper Theme ---
+hyper i hyper-one-dark
+
 #--- Clone WindowsDeskTheme ---
 git clone https://github.com/albisserAdrian/WindowsDeskTheme
 
