@@ -1,4 +1,4 @@
-function start-setup{
+function start{
     . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
 
     $Boxstarter.RebootOk=$true
