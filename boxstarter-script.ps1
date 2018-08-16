@@ -38,7 +38,6 @@ choco install vscode -y --params "/NoDesktopIcon /NoQuicklaunchIcon"
 choco install nuget.commandline -y  
 choco install sysinternals -y
 choco install vlc -y
-choco install spotify -y
 choco install Wget -y
 choco install baretail -y
 choco install putty.install -y
