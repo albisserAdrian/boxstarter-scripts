@@ -76,14 +76,18 @@ code --install-extension ms-vscode.powershell
 code --install-extension esbenp.prettier-vscode
 code --install-extension equimper.react-native-react-redux
 
-#--- Hyper Theme ---
-hyper i hyper-one-dark
-
 #--- Clone WindowsDeskTheme ---
 git clone https://github.com/albisserAdrian/WindowsDeskTheme
 
-#--- Install WindowsTheme
+#--- Install WindowsTheme ---
 .\WindowsDeskTheme\WindowsTheme.deskthemepack
+
+#--- Set lock screen Wallpaper ---
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -value "C:\WindowsDeskTheme\Wave-3840x2160.png"
+#--- Show lock screen background picture on the sign-in screen ---
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name DisableLogonBackgroundImage -Type DWord -Value 0
+#--- Disable lock screen ---
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name NoLockScreen -Type DWord -Value 1
 
 ########################################################################################
 # File Explorer Setup                                                                  #
@@ -247,7 +251,7 @@ $apps = @(
     "Microsoft.OneConnect"
     "Microsoft.People"
     "Microsoft.SkypeApp"
-    "Microsoft.Windows.Photos"
+    #"Microsoft.Windows.Photos"
     "Microsoft.WindowsAlarms"
     "Microsoft.WindowsCamera"
     "Microsoft.WindowsMaps"
