@@ -1,5 +1,3 @@
-Update-ExecutionPolicy Unrestricted
-
 . { iwr -useb https://boxstarter.org/bootstrapper.ps1 } | iex; get-boxstarter -Force
 
 $Boxstarter.RebootOk=$true
@@ -83,7 +81,11 @@ git clone https://github.com/albisserAdrian/WindowsDeskTheme
 .\WindowsDeskTheme\WindowsTheme.deskthemepack
 
 #--- Set lock screen Wallpaper ---
-Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -value "C:\WindowsDeskTheme\Wave-3840x2160.png"
+Copy-Item -Path .\WindowsDeskTheme\Wave-3840x2160.png -Destination C:\Users\$env:UserName\Pictures\Wave-3840x2160.png
+If (-Not (Test-Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization")) {
+    New-Item -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows" -Name Personalization
+}
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\Personalization" -Name LockScreenImage -value C:\Users\$env:UserName\Pictures\Wave-3840x2160.png
 #--- Show lock screen background picture on the sign-in screen ---
 Set-ItemProperty -Path "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System" -Name DisableLogonBackgroundImage -Type DWord -Value 0
 #--- Disable lock screen ---
