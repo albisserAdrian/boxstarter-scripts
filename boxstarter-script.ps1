@@ -27,10 +27,8 @@ choco install Microsoft-Windows-Subsystem-Linux -source windowsfeatures
 #--- Packages
 choco install 7zip.install -y
 choco install autohotkey.portable -y
-choco install beyondcompare -y
 choco install curl -y
 choco install hyper -y
-choco install fiddler4 -y
 choco install git.install -y
 choco install github-desktop -y
 choco install nodejs.install -y
@@ -102,8 +100,8 @@ Set-WindowsExplorerOptions -EnableShowHiddenFilesFoldersDrives -EnableShowProtec
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name LaunchTo -Type DWord -Value 1
 
 # Better File Explorer
-Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneExpandToCurrentFolder -Value 1		
-Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneShowAllFolders -Value 1		
+#Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneExpandToCurrentFolder -Value 1		
+#Set-ItemProperty -Path HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced -Name NavPaneShowAllFolders -Value 1		
 
 # Disable Quick Access: Recent Files
 Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name ShowRecent -Type DWord -Value 0
@@ -221,6 +219,9 @@ $appname = "Microsoft Store"
 # Unpin Microsoft Store from Taskbar
 $appname = "Mail"
 ((New-Object -Com Shell.Application).NameSpace('shell:::{4234d49b-0245-4df3-b780-3893943456e1}').Items() | ?{$_.Name -eq $appname}).Verbs() | ?{$_.Name.replace('&','') -match 'Unpin from taskbar'} | %{$_.DoIt(); $exec = $true}
+
+#--- Install WindowsTheme ---
+.\WindowsDeskTheme\WindowsTheme.deskthemepack
 
 # Restart Explorer
 Stop-Process -ProcessName explorer
