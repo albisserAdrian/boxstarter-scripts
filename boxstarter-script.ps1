@@ -10,7 +10,7 @@ Update-ExecutionPolicy Unrestricted
 Disable-UAC
 
 #--- Update Windows and reboot if necessary
-Install-WindowsUpdate -AcceptEula
+#Install-WindowsUpdate -AcceptEula
 Disable-MicrosoftUpdate
 
 #--- Windows Settings ---
@@ -352,4 +352,4 @@ Remove-Item C:\Users\Public\Desktop\*.lnk
 #--- Restore Temporary Settings ---
 Enable-UAC
 Enable-MicrosoftUpdate
-Install-WindowsUpdate -acceptEula
+#Install-WindowsUpdate -acceptEula
